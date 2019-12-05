@@ -16,9 +16,12 @@ services:
       - 'sense-data:/data'
     depends_on:
       - influxdb
-  sensor:
-    build: ./sensor
+  openhab:
+    build: ./openhab
+    ports:
+      - "8080:8080"
+    volumes:
+      - 'sense-data:/data'
     privileged: true
     restart: always
-    depends_on:
-     - influxdb
+
